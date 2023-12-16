@@ -17,15 +17,15 @@ pipeline {
             }
         }
 
-        stage('Run TestNG Tests') {
-            steps {
-                // TestNG testlerini otomatik olarak bul ve çalıştır
-                script {
-                    def mvnHome = tool name: 'Maven', type: 'maven'
-                    sh "${mvnHome}/bin/mvn test" // TestNG annotation'larına sahip sınıfları otomatik olarak bulup çalıştırır
-                }
-            }
+       stage('Run TestNG Tests') {
+    steps {
+        script {
+            def mvnHome = tool name: 'Maven', type: 'maven'
+            sh "${mvnHome}/bin/mvn test" // TestNG testlerini otomatik olarak algılar ve çalıştırır
         }
+    }
+}
+
         
         // Diğer aşamaları buraya ekleyebilirsiniz: test, dağıtım, vs.
     }

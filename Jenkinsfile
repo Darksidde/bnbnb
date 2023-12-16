@@ -2,32 +2,29 @@ pipeline {
     agent any
 
     tools {
-        // Maven aracını tanımla
-        maven 'Maven' // 'Maven' burada tanımlı Maven aracının adıdır, Jenkins arayüzünde belirtilen isimle aynı olmalıdır
+        maven 'Maven' // Jenkins arayüzünde tanımlı Maven aracının adı
     }
 
     stages {
         stage('Build') {
             steps {
-                // Tanımlanan Maven aracını çağırarak proje derleme işlemi
                 script {
                     def mvnHome = tool name: 'Maven', type: 'maven'
-                    sh "${mvnHome}/bin/mvn clean install" // Maven'in doğru sürümünü belirtin
+                    sh "${mvnHome}/bin/mvn clean install" // Proje derleme işlemi
                 }
             }
         }
 
-       stage('Run TestNG Tests') {
-    steps {
-        script {
-            def mvnHome = tool name: 'Maven', type: 'maven'
-            sh "${mvnHome}/bin/mvn test" // TestNG testlerini otomatik olarak algılar ve çalıştırır
+        stage('Run TestNG Tests') {
+            steps {
+                script {
+                    def mvnHome = tool name: 'Maven', type: 'maven'
+                    sh "${mvnHome}/bin/mvn test" // TestNG testlerini çalıştırma işlemi
+                }
+            }
         }
-    }
-}
 
-        
-        // Diğer aşamaları buraya ekleyebilirsiniz: test, dağıtım, vs.
+        // Diğer aşamalar eklenebilir
     }
-    // Post veya diğer seçenekleri de burada ekleyebilirsiniz.
+    // Post veya diğer seçenekler buraya eklenebilir
 }

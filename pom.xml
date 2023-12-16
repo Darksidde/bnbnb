@@ -1,5 +1,6 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.example</groupId>
     <artifactId>Selenium</artifactId>
@@ -47,24 +48,16 @@
             <version>2.6.4</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>io.cucumber</groupId>
-            <artifactId>cucumber-testng</artifactId>
-            <version>6.8.1</version>
-        </dependency>
-
-        <!-- ... Diğer bağımlılıklar ... -->
+       
     </dependencies>
 
     <build>
-        <sourceDirectory>src/main/java</sourceDirectory>
+        <sourceDirectory>src/main/resources</sourceDirectory>
         <testSourceDirectory>src/test/java</testSourceDirectory>
 
         <plugins>
             <!-- Spring Boot Maven Plugin -->
-            <plugin>
-                <!-- Spring Boot Plugin -->
-            </plugin>
+            <!-- Bu eklentiyi buraya ekleyin -->
 
             <!-- Maven Compiler Plugin -->
             <plugin>
@@ -79,65 +72,22 @@
 
             <!-- Maven Surefire Plugin -->
             <!-- Surefire Plugin -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.0.0-M5</version>
-                <configuration>
-                    <suiteXmlFiles>
-                        <suiteXmlFile>testng.xml</suiteXmlFile> <!-- TestNG suite dosyasının adı -->
-                    </suiteXmlFiles>
-                </configuration>
-            </plugin>
+         <plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-surefire-plugin</artifactId>
+    <version>3.0.0-M5</version>
+    <configuration>
+        <suiteXmlFiles>
+            <suiteXmlFile>testng.xml</suiteXmlFile> <!-- TestNG suite dosyasının adı -->
+        </suiteXmlFiles>
+    </configuration>
+</plugin>
 
-            <!-- Maven Cucumber Reporting Plugin -->
-            <plugin>
-                <groupId>net.masterthought</groupId>
-                <artifactId>maven-cucumber-reporting</artifactId>
-                <version>5.0.0</version>
-                <executions>
-                    <execution>
-                        <id>execution</id>
-                        <phase>verify</phase>
-                        <goals>
-                            <goal>generate</goal>
-                        </goals>
-                        <configuration>
-                            <projectName>maximumautomation</projectName>
-                            <outputDirectory>${project.build.directory}</outputDirectory>
-                            <cucumberOutput>${project.build.directory}/cucumber.json</cucumberOutput>
-                            <jsonFiles>
-                                <param>**/*.json</param>
-                            </jsonFiles>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
 
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>build-helper-maven-plugin</artifactId>
-                <version>3.2.0</version>
-                <executions>
-                    <execution>
-                        <id>add sources</id>
-                        <phase>generate-test-sources</phase>
-                        <goals>
-                            <goal>add-test-source</goal>
-                        </goals>
-                        <configuration>
-                            <sources>
-                                <source>Source</source>
-                            </sources>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <!-- Build Helper Maven Plugin -->
-            <plugin>
-                <!-- Build Helper Maven Plugin -->
-            </plugin>
+     
+
         </plugins>
+
     </build>
     <!-- Diğer etiketler -->
 </project>
